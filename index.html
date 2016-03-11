@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://js.arcgis.com/3.16/esri/css/esri.css">
-<script src="https://js.arcgis.com/3.16/"></script>
-<script src = "js/esri.js"></script>
-<link rel = "stylesheet" src = "assets/style.css">
-<title>ArcGIS Exploration</title>
+<title>Create a Web Map</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" type="text/css" href="https://js.arcgis.com/3.16/esri/css/esri.css">
+<style>
+  html,body,#mapDiv,.map.container{
+    padding:0;
+    margin:0;
+    height:100%;
+  }
+</style>
+
+<script>var dojoConfig = { parseOnLoad:true };</script>
+<script src="https://js.arcgis.com/3.16compact/"></script>
+<script>
+  var map;
+  require(["esri/map", "esri/arcgis/utils", "dojo/domReady!"], function(Map, arcgisUtils){
+    arcgisUtils.arcgisUrl = "http://www.arcgis.com/home/webmap/viewer.html?webmap=7fd2ad9ec0254e9a86226086c3893094";
+    arcgisUtils.createMap("7fd2ad9ec0254e9a86226086c3893094", "mapDiv").then(function (response) {
+      map = response.map;
+  });
+  });
+</script>
 </head>
-<main>
-  <body class="claro">
-    <div id="mapDiv"></div>
-  </body>
-</main>
+
+<body>
+  <div id="mapDiv"></div>
+</body>
 </html>
